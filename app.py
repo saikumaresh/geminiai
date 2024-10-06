@@ -4,8 +4,9 @@ import google.generativeai as genai
 app = Flask(__name__)
 
 # Replace with your Gemini AI API key
-os.environ["API_KEY"] = "AIzaSyAn_v59B4R3YS9jrKRpUwfsRGa9rMSHTtU"
-genai.configure(api_key=os.environ["API_KEY"])
+# Access the API key from the GitHub Actions secret
+api_key = os.environ.get('GEMINIAPIKEY')
+genai.configure(api_key)
 
 @app.route("/")
 def index():
