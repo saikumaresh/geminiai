@@ -9,28 +9,40 @@ body {
 }
 
 .container {
-    background: white;
+    background-color: #ffffff;
     padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-    width: 400px;
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    max-width: 500px;
+    width: 100%;
+}
+
+h1 {
     text-align: center;
+    color: #333;
+}
+
+form {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
 }
 
 input[type="text"] {
-    width: 80%;
+    flex: 1;
     padding: 10px;
-    margin-bottom: 10px;
+    border-radius: 4px;
     border: 1px solid #ccc;
-    border-radius: 5px;
+    font-size: 16px;
 }
 
 button {
     padding: 10px 20px;
+    border-radius: 4px;
     border: none;
     background-color: #007bff;
-    color: white;
-    border-radius: 5px;
+    color: #ffffff;
+    font-size: 16px;
     cursor: pointer;
 }
 
@@ -41,5 +53,4 @@ button:hover {
 #result {
     margin-top: 20px;
     font-size: 16px;
-    color: #333;
 }
