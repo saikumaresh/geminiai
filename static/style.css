@@ -1,14 +1,16 @@
-/* Add your desired styling here */
 body {
     font-family: Arial, sans-serif;
     text-align: center;
   }
+  
   h1 {
     font-size: 36px;
   }
+  
   form {
     margin-top: 20px;
   }
+  
   .result {
     margin-bottom: 20px;
   }

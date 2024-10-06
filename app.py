@@ -3,10 +3,14 @@ import google.generativeai as genai
 
 app = Flask(__name__)
 
-# Replace with your Gemini AI API key
 # Access the API key from the GitHub Actions secret
 api_key = os.environ.get('GEMINIAPIKEY')
-genai.configure(api_key)
+
+# You can add a check for the existence of the secret
+if not api_key:
+    raise Exception("Missing GEMINI_AI_API_KEY environment variable")
+
+genai.configure(api_key=api_key)
 
 @app.route("/")
 def index():
@@ -17,7 +21,7 @@ def search():
   query = request.form["query"]
   # Use Gemini AI's search functionality
   results = genai.search(query)
-  return render_template("search.html", results=results)
+  return render_template("search_results.html", results=results)
 
 if __name__ == "__main__":
   app.run()
