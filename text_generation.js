@@ -1,3 +1,4 @@
+const API_KEY = "AIzaSyAn_v59B4R3YS9jrKRpUwfsRGa9rMSHTtU";
 import { GoogleGenerativeAI } from "@google/generative-ai";
 
 document.getElementById("searchForm").addEventListener("submit", async function (event) {
@@ -9,7 +10,6 @@ document.getElementById("searchForm").addEventListener("submit", async function 
 
     try {
         // Configure the AI model
-        const API_KEY = "AIzaSyAn_v59B4R3YS9jrKRpUwfsRGa9rMSHTtU";
         const genAI = new GoogleGenerativeAI(API_KEY);
         const model = await genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
@@ -29,6 +29,18 @@ document.getElementById("searchForm").addEventListener("submit", async function 
             if (formattedResponse.includes('<li>')) {
                 formattedResponse = formattedResponse.replace(/(<li>.+?<\/li>)/g, '<ul>$1</ul>');
             }
+
+            // Format URLs as clickable links
+            formattedResponse = formattedResponse.replace(
+                /(https?:\/\/[^\s]+)/g,
+                '<a href="$1" target="_blank">$1</a>'
+            );
+
+            // Format website names and suggestions with bold text
+            formattedResponse = formattedResponse.replace(
+                /\*\*(.*?)\*\*/g,
+                '<strong>$1</strong>'
+            );
 
             // Set the formatted response as HTML
             resultDiv.innerHTML = formattedResponse;
