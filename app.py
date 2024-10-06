@@ -33,7 +33,7 @@ import os
 app = Flask(__name__)
 
 # Configure the Gemini API
-genai.configure(api_key="GEMINIAPIKEY")
+genai.configure(api_key="AIzaSyAn_v59B4R3YS9jrKRpUwfsRGa9rMSHTtU")
 model = genai.GenerativeModel("gemini-1.5-flash")
 
 @app.route('/api/search', methods=['POST'])
