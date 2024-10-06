@@ -9,6 +9,19 @@
 </head>
 
 <body>
+    <script type="importmap">
+        {
+          "imports": {
+            "@google/generative-ai": "https://esm.run/@google/generative-ai"
+          }
+        }
+      </script>
+      <script type="module">
+        import { GoogleGenerativeAI } from "@google/generative-ai";
+  
+        // Fetch your API_KEY
+        const API_KEY = "AIzaSyAn_v59B4R3YS9jrKRpUwfsRGa9rMSHTtU";
+    </script>
     <div class="container">
         <h1>Gemini AI Search</h1>
         <form id="searchForm">
@@ -17,7 +30,7 @@
         </form>
         <div id="result"></div>
     </div>
-    <script src="script.js"></script>
+    <script type="module" src="text_generation.js"></script>
 </body>
 
 </html>
