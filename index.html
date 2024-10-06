@@ -1,15 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <title>AI Search</title>
-</head>
-
-<body>
-    <script type="importmap">
+<html>
+  <center>
+    <div class="logo">
+      <img alt="Google" src="https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png">
+    </div>
+    <div>
+      <script type="importmap">
         {
           "imports": {
             "@google/generative-ai": "https://esm.run/@google/generative-ai"
@@ -23,7 +19,6 @@
         const API_KEY = "AIzaSyAn_v59B4R3YS9jrKRpUwfsRGa9rMSHTtU";
     </script>
     <div class="container">
-        <h1>AI Search</h1>
         <form id="searchForm">
             <input type="text" id="searchInput" placeholder="Enter your query here..." required>
             <button type="submit">Search</button>
@@ -31,6 +26,7 @@
         <div id="result"></div>
     </div>
     <script type="module" src="text_generation.js"></script>
-</body>
-
-</html>
+    </div>
+    <div class="buttons">
+     </div>
+  </body>
