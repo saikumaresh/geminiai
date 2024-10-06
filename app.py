@@ -1,27 +1,26 @@
-from flask import Flask, render_template, request
+from flask import Flask, request, jsonify
 import google.generativeai as genai
+import os
 
 app = Flask(__name__)
 
-# Access the API key from the GitHub Actions secret
-api_key = os.environ.get('GEMINIAPIKEY')
+# Configure the Gemini AI API
+genai.configure(api_key=os.environ["API_KEY"])
+model = genai.GenerativeModel("gemini-1.5-flash")
 
-# You can add a check for the existence of the secret
-if not api_key:
-    raise Exception("Missing GEMINI_AI_API_KEY environment variable")
-
-genai.configure(api_key=api_key)
-
-@app.route("/")
-def index():
-  return render_template("index.html")
-
-@app.route("/search", methods=["POST"])
+@app.route('/search', methods=['POST'])
 def search():
-  query = request.form["query"]
-  # Use Gemini AI's search functionality
-  results = genai.search(query)
-  return render_template("search_results.html", results=results)
+    data = request.get_json()
+    query = data.get('query', '')
 
-if __name__ == "__main__":
-  app.run()
+    if not query:
+        return jsonify({"result": "No query provided"}), 400
+
+    try:
+        response = model.generate_content(query)
+        return jsonify({"result": response.text})
+    except Exception as e:
+        return jsonify({"result": f"Error: {str(e)}"}), 500
+
+if __name__ == '__main__':
+    app.run(debug=True)
