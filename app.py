@@ -43,7 +43,8 @@ def search():
         return jsonify({'error': 'No query provided'}), 400
 
     try:
-        response = model.generate_content(data['query'])
+        # response = model.generate_content(data['query'])
+        response = model.generate_content("What is ChatGPT?")
         return jsonify({'result': response.text})
     # except Exception as e:
     #     return jsonify({'error': str(e)}), 500
