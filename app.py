@@ -4,7 +4,7 @@ import google.generativeai as genai
 app = Flask(__name__)
 
 # Replace with your Gemini AI API key
-os.environ["API_KEY"] = "YOUR_API_KEY"
+os.environ["API_KEY"] = "AIzaSyAn_v59B4R3YS9jrKRpUwfsRGa9rMSHTtU"
 genai.configure(api_key=os.environ["API_KEY"])
 
 @app.route("/")
