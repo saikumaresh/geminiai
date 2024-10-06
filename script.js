@@ -6,7 +6,7 @@ document.getElementById("searchForm").addEventListener("submit", async function 
     resultDiv.innerHTML = "Loading...";
 
     try {
-        const response = await fetch("http://127.0.0.1:5000/search", {
+        const response = await fetch("http://127.0.0.1:5000/api/search", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -15,7 +15,8 @@ document.getElementById("searchForm").addEventListener("submit", async function 
         });
 
         if (!response.ok) {
-            throw new Error(`Server error: ${response.statusText}`);
+            const errorData = await response.json(); // Fetch error response from server
+            throw new Error(`Server error: ${errorData.error || response.statusText}`); // Use detailed error
         }
 
         const data = await response.json();
@@ -26,6 +27,7 @@ document.getElementById("searchForm").addEventListener("submit", async function 
             resultDiv.innerHTML = "No result found.";
         }
     } catch (error) {
+        // Display the exact error message from the server or the catch block error
         resultDiv.innerHTML = `Error: ${error.message}`;
     }
 });
