@@ -45,8 +45,11 @@ def search():
     try:
         response = model.generate_content(data['query'])
         return jsonify({'result': response.text})
+    # except Exception as e:
+    #     return jsonify({'error': str(e)}), 500
     except Exception as e:
-        return jsonify({'error': str(e)}), 500
+        # Provide detailed error information
+        return jsonify({'error': str(e), 'message': 'There was an error processing your request.'}), 500
 
 if __name__ == '__main__':
     app.run(debug=True)
