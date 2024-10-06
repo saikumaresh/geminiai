@@ -4,23 +4,24 @@ import os
 
 app = Flask(__name__)
 
-# Configure the Gemini AI API
-genai.configure(api_key=os.environ["API_KEY"])
+# Configure the Gemini AI API key
+genai.configure(api_key=os.environ.get("GEMINIAPIKEY"))
 model = genai.GenerativeModel("gemini-1.5-flash")
 
-@app.route('/search', methods=['POST'])
+@app.route("/search", methods=["POST"])
 def search():
-    data = request.get_json()
-    query = data.get('query', '')
-
-    if not query:
-        return jsonify({"result": "No query provided"}), 400
-
     try:
-        response = model.generate_content(query)
-        return jsonify({"result": response.text})
-    except Exception as e:
-        return jsonify({"result": f"Error: {str(e)}"}), 500
+        data = request.get_json()
+        query = data.get("query")
 
-if __name__ == '__main__':
+        if not query:
+            return jsonify({"error": "No query provided"}), 400
+
+        response = model.generate_content(query)
+        return jsonify({"result": response.text}), 200
+
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
+if __name__ == "__main__":
     app.run(debug=True)
