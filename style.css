@@ -143,3 +143,41 @@ ul {
       margin-top: 20px;
       font-size: 16px;
   }
+
+/* Update */
+  body {
+    overflow: auto; /* Ensure scrolling is enabled */
+}
+/* Example */
+.fixed-element {
+    position: relative; /* Change from fixed to relative */
+}
+
+.container {
+    height: auto; /* Allow the container to grow */
+}
+html, body {
+    height: 100%;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    overflow: auto; /* Enable scrolling */
+}
+.overlay {
+    display: none; /* Hide the overlay when not needed */
+}
+html, body {
+    overflow: auto; /* Allow scrolling */
+}
+html, body {
+    margin: 0; /* Remove default margin */
+    height: auto; /* Allow body height to be dynamic */
+    overflow: auto; /* Enable scrolling */
+}
+body {
+    margin: 0; /* Reset body margin */
+    padding: 0; /* Reset body padding */
+}

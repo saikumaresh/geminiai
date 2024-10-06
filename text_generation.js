@@ -3,7 +3,7 @@ import { GoogleGenerativeAI } from "@google/generative-ai";
 
 document.getElementById("searchForm").addEventListener("submit", async function (event) {
     event.preventDefault();
-
+    window.onscroll = null;
     const query = document.getElementById("searchInput").value;
     const resultDiv = document.getElementById("result");
     resultDiv.innerHTML = "Loading...";
