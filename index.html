@@ -10,7 +10,7 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
+            background-color: #000000; /* Set background to black */
             display: flex;
             justify-content: center;
             align-items: center;
@@ -89,21 +89,24 @@
             background-color: #ddd;
             cursor: pointer;
         }
+
         html, body {
             margin: 0;
             padding: 0;
             height: auto; /* Allow body height to be dynamic */
             overflow: auto; /* Enable scrolling */
         }
+
         .header {
             background-color: #007bff;
             color: white;
             padding: 20px;
             text-align: center;
         }
+
         .content {
             height: 2000px; /* Add height for testing scrolling */
-            background-color: #f0f0f0;
+            background-color: #000000; /* Set background to black */
             padding: 20px;
         }
     </style>
@@ -118,17 +121,17 @@
                 "@google/generative-ai": "https://esm.run/@google/generative-ai"
               }
             }
-          </script>
+        </script>
         <script type="module">
-        import { GoogleGenerativeAI } from "@google/generative-ai";
-        const API_KEY = "AIzaSyAn_v59B4R3YS9jrKRpUwfsRGa9rMSHTtU";
+            import { GoogleGenerativeAI } from "@google/generative-ai";
+            const API_KEY = "AIzaSyAn_v59B4R3YS9jrKRpUwfsRGa9rMSHTtU";
         </script>
         <div>
-        <form id="searchForm">
-            <input type="text" id="searchInput" placeholder="Enter your query here..." required>
-            <button type="submit">Search</button>
-        </form>
-        <div id="result"></div>
+            <form id="searchForm">
+                <input type="text" id="searchInput" placeholder="Enter your query here..." required>
+                <button type="submit">Search</button>
+            </form>
+            <div id="result"></div>
         </div>
         <script type="module" src="text_generation.js"></script>
     </div>
